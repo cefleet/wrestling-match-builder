@@ -1,0 +1,20 @@
+{
+  "name": "wrestling-match-builder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "generate-data.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cefleet/wrestling-match-builder.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cefleet/wrestling-match-builder/issues"
+  },
+  "type": "module",
+  "homepage": "https://github.com/cefleet/wrestling-match-builder#readme"
+}
