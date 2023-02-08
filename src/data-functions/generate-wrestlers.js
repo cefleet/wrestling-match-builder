@@ -33,9 +33,3 @@ export function createWrestler(){
 
   return {name,gender, weight, age, exp, competitionLevel};
 }
-
-export function createTeam(name,wrestlersCount){
-  const wrestlers = [];
-  for(let i = 0; i <= wrestlersCount; i++) wrestlers.push(createWrestler());
-  return {name, wrestlers}
-}
