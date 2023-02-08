@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/wrestling-match-builder/static/css/main.6674713c.css",
+    "main.js": "/wrestling-match-builder/static/js/main.53267476.js",
+    "index.html": "/wrestling-match-builder/index.html",
+    "main.6674713c.css.map": "/wrestling-match-builder/static/css/main.6674713c.css.map",
+    "main.53267476.js.map": "/wrestling-match-builder/static/js/main.53267476.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6674713c.css",
+    "static/js/main.53267476.js"
+  ]
+}
