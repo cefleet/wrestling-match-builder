@@ -1,4 +1,4 @@
-import {buildAllPointsForTeam} from "./generate-points.js";
+import {buildAllPointsForTeam,buildAllMatchesForTeam} from "./generate-points.js";
 
 export function createBestMatchForWrestler(wrestlerWithPotentialMatches){
   return [wrestlerWithPotentialMatches.wrestler, 
@@ -12,23 +12,23 @@ export function createBestMatchesForTeam(wrestlers){
 }
 
 export function generateBestMatchesForAllTeams(teams){
-//This build every match with points itis probably an overkill but we can stick with it for now.
-  const AllPotentialMatchesWithPoints = teams.map(((_team,idx)=>buildAllPointsForTeam(teams,idx)));
-  const allBestMatches = AllPotentialMatchesWithPoints.flatMap(team=>createBestMatchesForTeam(team));
-
-  //remove duplicates
-  //w = wrestler
-  //c = current
-  return allBestMatches.reduce((matches, current)=>{
-    if(matches.find((match)=>checkIfMatchExists(match,current))) return matches;
-
+  const AllPossibleMatches = teams
+  .flatMap((_team,idx)=>buildAllMatchesForTeam(teams,idx))
+  .sort((a,b)=>a.points-b.points)
+  .reduce((matches, current)=>{
+    if(matches.find(match=>checkIfMatchExists(match,current))) return matches;
     return [...matches, current]
   },[])
+
+  console.log(AllPossibleMatches)
+
+ return []
 }
 
+
 function checkIfMatchExists(match1, match2) {
-  const target = [match1[0].name, match1[1].name];
-  const arr = [match2[0].name, match2[1].name];
+  const target = [match1.wrestler1.name, match1.wrestler2.name];
+  const arr = [match2.wrestler1.name, match2.wrestler2.name];
 
   return target.every(v => arr.includes(v))
 }

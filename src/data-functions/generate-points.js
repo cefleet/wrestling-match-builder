@@ -22,8 +22,25 @@ export function buildPointsForWrestler(wrestler,otherWrestlers){
   return {wrestler,comparrisons};
 }
 
+
 export function buildAllPointsForTeam(teams, idx){
   const team = teams[idx]
   const otherTeamsWrestlers = teams.reduce((notCurrentTeams,team,index)=>index != idx ? [...notCurrentTeams, ...team.wrestlers] : notCurrentTeams,[]);
+
   return team.wrestlers.map(wrestler=>buildPointsForWrestler(wrestler, otherTeamsWrestlers))
+}
+
+export function buildAllMatchesForWrestler(wrestler, otherTeamsWrestlers){
+  return buildPointsForWrestler(wrestler, otherTeamsWrestlers)?.comparrisons.map(opponent=>{
+    const points = opponent.points;
+    delete opponent.points;
+    return {wrestler1:wrestler, wrestler2:opponent, points}
+  }).sort((a,b)=>a.points-b.points);
+}
+
+export function buildAllMatchesForTeam(teams, idx){
+  const team = teams[idx]
+  const otherTeamsWrestlers = teams.reduce((notCurrentTeams,team,index)=>index != idx ? [...notCurrentTeams, ...team.wrestlers] : notCurrentTeams,[]);
+
+  return team.wrestlers.flatMap(wrestler=>buildAllMatchesForWrestler(wrestler, otherTeamsWrestlers))
 }
