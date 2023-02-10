@@ -33,7 +33,7 @@ function MatchCard({wrestler}){
   )
 }
 
-function Match({match:[wrestler1, wrestler2], idx}){
+function Match({match:{wrestler1, wrestler2}, idx}){
   return (
     <FlexBox style={styleClasses.match}>
       <MatchCard wrestler={wrestler1} />

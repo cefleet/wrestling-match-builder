@@ -10,9 +10,9 @@ function calculateExpPoints(exp1,exp2){
   return Math.abs(exp1-exp2)*3;
 }
 
+//TODO this needs tweeking to better consider mutiple differences in one direction
 export function buildPointsForWrestler(wrestler,otherWrestlers){
   let comparrisons = otherWrestlers.map(otherWrestler=> {
-    //we are looking for the least amount of points. 
     const weightPoints = calculateWeightPoints(wrestler.weight,otherWrestler.weight);
     const agePoints = calculateAgePoints(wrestler.age,otherWrestler.age);
     const expPoints = calculateExpPoints(wrestler.exp, otherWrestler.exp)

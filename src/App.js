@@ -1,11 +1,12 @@
 
 import {useState} from "react";
-import {generateBestMatchesForAllTeams} from "./data-functions/generate-match";
+import { generateBestNumberOfMatchesForAllTeams} from "./data-functions/generate-match";
 import {FlexBox} from "./components/FlexBox";
 import {Box} from "./components/Box";
 import Team from "./features/Team";
 import Match from "./features/Match";
 import CreateTeamForm from "./features/CreateTeamForm";
+import Header from "./features/Header"
 import { Button } from "./components/Button";
 function App() {
 
@@ -14,12 +15,13 @@ function App() {
 
 
   function createMatches(){
-    const allMatches = generateBestMatchesForAllTeams(teams);
+    const allMatches = generateBestNumberOfMatchesForAllTeams(teams);
     setMatches(allMatches)
   }
 
   return (
     <Box>
+      <Header />
       <FlexBox style={{alignItems:"center"}}>
         <Box style={{margin:'1.5rem'}}><CreateTeamForm addTeamToList={(team)=>setTeams([...teams, team])}/></Box>
         <Box style={{margin:'1.5rem'}}>{teams.length > 1 &&<Box><Button onClick={createMatches}>Generate Matches</Button></Box>} </Box>
