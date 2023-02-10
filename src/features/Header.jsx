@@ -1,13 +1,18 @@
 import {FlexBox} from "../components/FlexBox";
 import {Box} from "../components/Box";
 import {Button} from "../components/Button";
+import {RiUser3Fill, RiSettings5Fill} from "react-icons/ri"
 import { Link } from "react-router-dom";
 const styleClasses = {
   header:{
     padding:'0.25rem 0 1rem 1rem'
   },
   button:{
-    margin:'0 1rem'
+    margin:'0 .5rem'
+  },
+  icon:{
+    margin:'0 .5rem',
+    padding:'0.25rem 1rem'
   },
   links:{
     borderBottom:"1px solid",
@@ -23,6 +28,10 @@ function HButton({children, to, ...props}){
   return <Link to={to}><Button style={styleClasses.button} {...props}>{children}</Button></Link>
 }
 
+function IHButton({children, to, ...props}){
+  return <Link to={to}><Button style={styleClasses.icon} {...props}>{children}</Button></Link>
+}
+
 function Header({}){
   const {header, links} = styleClasses;
   return (
@@ -36,8 +45,8 @@ function Header({}){
           <HButton to='/tournements'>Tournements</HButton>
         </FlexBox>
         <FlexBox>
-            <HButton to='/account'>My Account</HButton>
-            <HButton to='/generate'>Generate Data</HButton>
+          <IHButton to='/account'><RiUser3Fill size={'2.55rem'}  /></IHButton >
+          <IHButton to='/generate'><RiSettings5Fill size={'2.55rem'}  /></IHButton >
         </FlexBox>
       </FlexBox>
     </Box>
