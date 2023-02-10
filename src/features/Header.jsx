@@ -1,7 +1,7 @@
 import {FlexBox} from "../components/FlexBox";
 import {Box} from "../components/Box";
 import {Button} from "../components/Button";
-
+import { Link } from "react-router-dom";
 const styleClasses = {
   header:{
     padding:'0.25rem 0 1rem 1rem'
@@ -19,25 +19,25 @@ const styleClasses = {
   }
 };
 
-function HButton({children, ...props}){
-  return <Button style={styleClasses.button} {...props}>{children}</Button>
+function HButton({children, to, ...props}){
+  return <Link to={to}><Button style={styleClasses.button} {...props}>{children}</Button></Link>
 }
 
 function Header({}){
   const {header, links} = styleClasses;
   return (
     <Box style={header}>
-      <h1>Wrestling Wrastler</h1>
+      <Link to='/'><h1>Wrestling Wrastler</h1></Link>
       <FlexBox style={links}>
         <FlexBox>
-          <HButton>Team</HButton>
-          <HButton>League</HButton>
-          <HButton>Matches</HButton>
-          <HButton>Tournements</HButton>
+          <HButton to='/team'>Team</HButton>
+          <HButton to='/league'>League</HButton>
+          <HButton to='/matches'>Matches</HButton>
+          <HButton to='/tournements'>Tournements</HButton>
         </FlexBox>
         <FlexBox>
-            <HButton>My Account</HButton>
-            <HButton>Generate Data</HButton>
+            <HButton to='/account'>My Account</HButton>
+            <HButton to='/generate'>Generate Data</HButton>
         </FlexBox>
       </FlexBox>
     </Box>

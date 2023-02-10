@@ -1,36 +1,47 @@
-
-import {useState} from "react";
-import { generateBestNumberOfMatchesForAllTeams} from "./data-functions/generate-match";
-import {FlexBox} from "./components/FlexBox";
-import {Box} from "./components/Box";
-import Team from "./features/Team";
-import Match from "./features/Match";
-import CreateTeamForm from "./features/CreateTeamForm";
 import Header from "./features/Header"
-import { Button } from "./components/Button";
+import { Routes, Route, Outlet, Link } from "react-router-dom";
+import Account from "./pages/Account";
+import Generate from "./pages/Generate";
+import Home from "./pages/Home";
+import League from "./pages/League";
+import Matches from "./pages/Matches";
+import Team from "./pages/Team";
+import Tournements from "./pages/Tournements"
 function App() {
 
-  const [teams, setTeams] = useState([]);
-  const [matches, setMatches] = useState([]);
-
-
-  function createMatches(){
-    const allMatches = generateBestNumberOfMatchesForAllTeams(teams);
-    setMatches(allMatches)
-  }
-
   return (
-    <Box>
+    <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="account" element={<Account />} />
+          <Route path="Generate" element={<Generate />} />
+          <Route path="League" element={<League />} />
+          <Route path="Matches" element={<Matches />} />
+          <Route path="Team" element={<Team />} />
+          <Route path="Tournements" element={<Tournements />} />
+         <Route path="*" element={<NoMatch />} />
+        </Route>
+      </Routes>
+  )
+}
+
+function Layout() {
+  return (
+    <div>
       <Header />
-      <FlexBox style={{alignItems:"center"}}>
-        <Box style={{margin:'1.5rem'}}><CreateTeamForm addTeamToList={(team)=>setTeams([...teams, team])}/></Box>
-        <Box style={{margin:'1.5rem'}}>{teams.length > 1 &&<Box><Button onClick={createMatches}>Generate Matches</Button></Box>} </Box>
-      </FlexBox>
-               
-      {<FlexBox>{matches.map((match, idx)=><Match key={idx} match={match} idx={idx}/>)}</FlexBox>}
-      {<FlexBox style={{alignItems:"flex-start"}}>{teams.map((team, idx)=><Team key={`${team.name}_${idx}`} team={team}/>)}</FlexBox>}
-    </Box>
+      <Outlet />
+    </div>
   );
+}
+function NoMatch() {
+return (
+  <div>
+    <h2>4 oh 4!</h2>
+    <p>
+      <Link to="/">There is nothing to see here.</Link>
+    </p>
+  </div>
+);
 }
 
 export default App;
