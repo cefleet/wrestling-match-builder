@@ -5,7 +5,7 @@ import {RiUser3Fill, RiSettings5Fill} from "react-icons/ri"
 import { Link } from "react-router-dom";
 const styleClasses = {
   header:{
-    padding:'0.25rem 0 1rem 1rem'
+    padding:'0.25rem 0 1rem 0'
   },
   button:{
     margin:'0 .5rem'
@@ -39,14 +39,14 @@ function Header({}){
       <Link to='/'><h1>Wrestling Wrastler</h1></Link>
       <FlexBox style={links}>
         <FlexBox>
-          <HButton to='/team'>Team</HButton>
+          <HButton to='/team'>My Team</HButton>
           <HButton to='/league'>League</HButton>
           <HButton to='/matches'>Matches</HButton>
           <HButton to='/tournements'>Tournements</HButton>
         </FlexBox>
         <FlexBox>
           <IHButton to='/account'><RiUser3Fill size={'2.55rem'}  /></IHButton >
-          <IHButton to='/generate'><RiSettings5Fill size={'2.55rem'}  /></IHButton >
+          <IHButton to='/settings'><RiSettings5Fill size={'2.55rem'}  /></IHButton >
         </FlexBox>
       </FlexBox>
     </Box>

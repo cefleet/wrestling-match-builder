@@ -23,8 +23,10 @@ export function Card({children, style={}, ...props}){
   )
 };
 
-export function CardTitle({children, style={}, ...props}){
+export function CardTitle({children, style={}, pcolor='#ffffff', scolor='#000000',...props}){
   const {cardTitle} = classStyles;
+  cardTitle.backgroundColor = pcolor;
+  cardTitle.color = scolor;
   return (
     <Box style={{...cardTitle, ...style}} {...props}>{children}</Box>
   )

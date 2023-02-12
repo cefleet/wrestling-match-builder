@@ -2,7 +2,7 @@ import { Box } from "./Box";
 const styleClasses={
   box:{
     width:'100%',
-    padding:'1rem'
+    padding:'0.25rem 1rem'
   },
   label:{
     width:"100%",

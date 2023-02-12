@@ -1,5 +1,5 @@
 import {useState} from "react";
-import { generateBestNumberOfMatchesForAllTeams} from "../data-functions/generate-match";
+import { generateBestNumberOfMatchesForAllTeams} from "../generate-functions/generate-match";
 // import {FlexBox} from "./components/FlexBox";
 // import {Box} from "./components/Box";
 // import Team from "./features/Team";

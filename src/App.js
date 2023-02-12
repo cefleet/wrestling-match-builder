@@ -1,20 +1,32 @@
 import Header from "./features/Header"
 import { Routes, Route, Outlet, Link } from "react-router-dom";
+
+import { QueryClient, QueryClientProvider } from 'react-query';
 import Account from "./pages/Account";
-import Generate from "./pages/Generate";
+import Settings from "./pages/Settings";
 import Home from "./pages/Home";
-import League from "./pages/League";
+import League from "./pages/League/LeagueContainer";
 import Matches from "./pages/Matches";
-import Team from "./pages/Team";
-import Tournements from "./pages/Tournements"
+import Team from "./pages/Team/TeamContainer.jsx";
+import Tournements from "./pages/Tournements";
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+    },
+  },
+});
+
 function App() {
 
   return (
+    <QueryClientProvider client={queryClient}>
     <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="account" element={<Account />} />
-          <Route path="Generate" element={<Generate />} />
+          <Route path="Settings" element={<Settings />} />
           <Route path="League" element={<League />} />
           <Route path="Matches" element={<Matches />} />
           <Route path="Team" element={<Team />} />
@@ -22,12 +34,13 @@ function App() {
          <Route path="*" element={<NoMatch />} />
         </Route>
       </Routes>
+    </QueryClientProvider>
   )
 }
 
 function Layout() {
   return (
-    <div>
+    <div style={{padding:'1rem', margin:'1rem'}}>
       <Header />
       <Outlet />
     </div>
